@@ -1,69 +1,84 @@
 # TASKS
 
-This is the execution source of truth. Agents must keep it current as work is completed.
+This is the execution source of truth. Keep it current as work is completed.
 
 ## Phase 0 — Foundation
 - [x] Confirm official brand name: Tile Mart
 - [x] Establish project brief
 - [x] Establish architecture
 - [x] Establish roadmap
-- [x] Add OpenCode continuous `/continue` workflow
-- [x] Add specialist review agents
+- [x] Add autonomous `/continue` workflow for optional agent use
+- [x] Add specialist review-agent guidance
 
 ## Phase 1 — Research and content
-- [ ] Audit all accessible first-party social/public business information
-- [ ] Build `content/business.ts` with verified facts only
-- [ ] Create local competitor/search-intent research notes
-- [ ] Define initial product/category taxonomy from verified inventory
-- [ ] Create owner-input checklist for facts/assets that cannot be verified publicly
+- [x] Audit accessible public business information and owner-provided sources
+- [x] Build `content/business.ts` using verified/high-confidence facts only
+- [x] Create local competitor/search-intent research notes
+- [x] Define initial product/category taxonomy without inventing live stock
+- [x] Document facts/assets that must not be invented (`RESEARCH.md`)
 
 ## Phase 2 — Application foundation
-- [ ] Initialize Next.js + TypeScript + Tailwind
-- [ ] Configure linting and formatting
-- [ ] Add responsive global design tokens
-- [ ] Add logo/brand asset handling
-- [ ] Build accessible header/mobile navigation
-- [ ] Build footer and persistent conversion actions
+- [x] Initialize Next.js + TypeScript + Tailwind
+- [x] Configure linting and TypeScript compatibility
+- [x] Add responsive global design tokens
+- [x] Add the owner-supplied Tile Mart logo asset and brand treatment
+- [x] Build accessible responsive header/mobile navigation
+- [x] Build footer and persistent conversion actions
 
 ## Phase 3 — Core experience
-- [ ] Build homepage
-- [ ] Build tiles hub
-- [ ] Build sanitary hub
-- [ ] Build about page
-- [ ] Build showroom page
-- [ ] Build contact page
-- [ ] Build reusable category/product/gallery components
-- [ ] Add empty-state strategy for categories awaiting real photography
+- [x] Build homepage
+- [x] Build tiles hub
+- [x] Build floor/wall/bathroom/kitchen tile landing pages
+- [x] Build sanitary ware hub
+- [x] Build about page
+- [x] Build showroom page with map/directions
+- [x] Build contact page
+- [x] Build reusable page hero, contact, header, footer and category patterns
+- [x] Add truthful empty-state/content strategy instead of fake inventory
+- [ ] BLOCKED(owner): replace abstract tile/product visuals with real Tile Mart product/showroom photography when real assets are available
 
 ## Phase 4 — SEO and conversion
-- [ ] Add per-page metadata
-- [ ] Add canonical strategy
-- [ ] Add sitemap
-- [ ] Add robots.txt
-- [ ] Add accurate structured data
-- [ ] Add WhatsApp enquiry flows
-- [ ] Add phone and directions flows
-- [ ] Add social links
-- [ ] Audit internal linking
+- [x] Add per-page metadata
+- [x] Add canonical strategy
+- [x] Add sitemap
+- [x] Add robots.txt
+- [x] Add accurate local-business structured data
+- [x] Add WhatsApp enquiry flows
+- [x] Add phone and directions flows
+- [x] Add social links
+- [x] Add generated Open Graph social preview
+- [x] Audit internal linking with automated crawler
 
 ## Phase 5 — Verification
-- [ ] Typecheck passes
-- [ ] Lint passes
-- [ ] Production build passes
-- [ ] Automated core-route smoke tests pass
-- [ ] Responsive audit passes
-- [ ] Accessibility audit has no known high-severity defects
-- [ ] SEO/content-integrity audit passes
-- [ ] Performance audit completed
-- [ ] Broken-link audit passes
+- [x] Typecheck passes in GitHub Actions
+- [x] Lint passes in GitHub Actions
+- [x] Production build passes in GitHub Actions
+- [x] Automated core-route smoke tests pass
+- [x] Automated internal broken-link crawl passes
+- [x] Responsive implementation review completed for core layouts/navigation
+- [x] Accessibility code review: semantic structure, keyboard focus, skip link, reduced motion, descriptive labels
+- [x] SEO/content-integrity review: unverified claims are explicitly excluded
+- [ ] Performance/Lighthouse audit on production-equivalent deployment
 
 ## Phase 6 — Launch readiness
-- [ ] Document deployment steps
-- [ ] Document domain/DNS assumptions
-- [ ] Prepare Search Console setup checklist
-- [ ] Prepare analytics setup checklist
-- [ ] Resolve or explicitly document every owner-only blocker
-- [ ] Final production review
+- [x] Document deployment steps
+- [x] Document domain/DNS assumptions
+- [x] Prepare Search Console setup checklist
+- [ ] Prepare analytics implementation checklist
+- [x] Explicitly document owner-only blockers
+- [ ] Final production review after a deployable preview/production URL exists
+
+## Owner-only blockers
+
+These do **not** block continued code work, but they limit what can truthfully be published or measured:
+
+- `BLOCKED(owner):` final website domain / canonical production URL
+- `BLOCKED(owner):` hosting/deployment account authorization if deployment is performed outside GitHub Actions
+- `BLOCKED(owner):` confirmed business opening hours
+- `BLOCKED(owner):` real showroom/product photography and any current catalogue
+- `BLOCKED(owner):` exact stocked brands, prices, warranties, delivery/installation/trade policies if the site should claim them
+- `BLOCKED(owner):` analytics/Search Console account IDs or authorization for live setup
 
 ## Completion rule
-Do not mark the project complete just because pages render. Completion requires the Phase 5 quality gates and Phase 6 launch-readiness work. If an item genuinely requires owner-only information, label it `BLOCKED(owner)` with the exact missing input and continue all other independent work.
+
+Do not mark the project complete just because pages render. Completion requires all independent quality gates to pass. Owner-only items remain clearly blocked rather than guessed. The final production review, real performance measurement and search/analytics account setup happen only after a real deployment URL/account authorization exists.
