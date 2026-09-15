@@ -1,140 +1,168 @@
-import { business, primaryCategories } from "@/content/business";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ContactPanel } from "@/components/ContactPanel";
+import { business, tileCategories } from "@/content/business";
+import { phoneHref, whatsappHref } from "@/lib/site";
 
-const whatsappHref = `https://wa.me/${business.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Hello Tile Mart, I would like to ask about your tiles and sanitary products."
-)}`;
+export const metadata: Metadata = {
+  title: "Tile Mart Peshawar | Tiles & Sanitary Ware",
+  description:
+    "Looking for tiles or sanitary ware in Peshawar? Explore Tile Mart by room and product type, then confirm current options directly by WhatsApp or phone.",
+  alternates: { canonical: "/" },
+};
+
+const quickFacts = [
+  ["Peshawar", "Local showroom"],
+  ["Tiles", "Main category"],
+  ["Sanitary Ware", "Bathroom solutions"],
+] as const;
 
 export default function HomePage() {
   return (
-    <main>
-      <header className="border-b border-[var(--line)] bg-[var(--surface)]">
-        <div className="container flex min-h-20 items-center justify-between gap-6 py-4">
-          <a href="#top" className="flex items-end gap-2" aria-label="Tile Mart home">
-            <span className="text-2xl font-black tracking-[0.16em] text-[var(--brand)]">TILE</span>
-            <span className="pb-0.5 text-xl font-semibold italic text-[var(--brand)]">Mart</span>
-          </a>
-          <nav className="hidden items-center gap-7 text-sm font-semibold md:flex" aria-label="Primary navigation">
-            <a href="#tiles">Tiles</a>
-            <a href="#sanitary">Sanitary Ware</a>
-            <a href="#showroom">Showroom</a>
-          </nav>
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-[var(--brand)] px-5 py-3 text-sm font-bold text-white transition hover:bg-[var(--brand-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--brand)] focus:ring-offset-2"
-          >
-            WhatsApp
-          </a>
-        </div>
-      </header>
-
-      <section id="top" className="tile-grid bg-[var(--brand-dark)] text-white">
-        <div className="container grid min-h-[72vh] items-end gap-12 py-16 md:grid-cols-[1.3fr_.7fr] md:py-24">
-          <div className="max-w-4xl">
-            <p className="mb-5 text-sm font-bold uppercase tracking-[0.22em] text-white/70">Peshawar · Pakistan</p>
-            <h1 className="max-w-4xl text-5xl font-black leading-[0.96] tracking-[-0.05em] sm:text-6xl md:text-8xl">
-              Tiles that shape the whole space.
+    <main id="main-content">
+      <section className="relative overflow-hidden bg-[#0d1b25] text-white">
+        <div className="tile-grid absolute inset-0 opacity-25" aria-hidden="true" />
+        <div className="container relative grid min-h-[72vh] items-center gap-12 py-16 lg:grid-cols-[1.1fr_.9fr] lg:py-24">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-white/55">Karkhano Market · Peshawar</p>
+            <h1 className="mt-5 max-w-4xl text-5xl font-black leading-[0.94] tracking-[-0.055em] sm:text-6xl lg:text-[5.5rem]">
+              Start with the surface. Build the whole room.
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/78 md:text-xl">
-              Explore tile and sanitary solutions for homes, renovations and building projects from Tile Mart in Peshawar.
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/70">
+              Explore tiles, wash basins and sanitary ware from Tile Mart in Peshawar. Browse by space, then contact the showroom for current designs, sizes and availability.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href="#tiles" className="rounded-full bg-white px-6 py-3.5 font-bold text-[var(--brand-dark)]">
+              <Link href="/tiles" className="rounded-full bg-white px-6 py-3.5 text-sm font-black text-[#0d1b25]">
                 Explore tiles
+              </Link>
+              <a
+                href={whatsappHref("Hello Tile Mart, I am looking for tiles/sanitary ware. Please share current options and availability.")}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-[var(--brand)] px-6 py-3.5 text-sm font-black text-white"
+              >
+                Ask on WhatsApp
               </a>
-              <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="rounded-full border border-white/40 px-6 py-3.5 font-bold text-white">
-                Get directions
+              <a href={phoneHref} className="rounded-full border border-white/25 px-6 py-3.5 text-sm font-black text-white">
+                Call showroom
               </a>
             </div>
           </div>
-          <div className="border-l border-white/30 pl-6 text-sm leading-7 text-white/70">
-            <p className="font-bold uppercase tracking-[0.16em] text-white">Start with the surface.</p>
-            <p className="mt-3">Compare styles, finishes and room applications, then contact Tile Mart directly for current options and availability.</p>
+
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[500px] overflow-hidden rounded-[2.25rem] border border-white/10 bg-[#142b3a] p-5 shadow-2xl shadow-black/30" aria-hidden="true">
+            <div className="grid h-full grid-cols-2 grid-rows-3 gap-3">
+              <div className="rounded-2xl bg-[#e8e4dc]" />
+              <div className="rounded-2xl bg-[#b8c5cc]" />
+              <div className="col-span-2 rounded-2xl tile-sample-light" />
+              <div className="rounded-2xl bg-[#597b8d]" />
+              <div className="rounded-2xl bg-[#d6c4a5]" />
+            </div>
+            <div className="absolute bottom-9 left-9 right-9 rounded-2xl border border-white/10 bg-[#0d1b25]/90 p-5 backdrop-blur">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">Tile Mart</p>
+              <p className="mt-2 text-xl font-black">Tiles · Sanitary Ware · Peshawar</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="tiles" className="container py-20 md:py-28">
-        <div className="mb-12 grid gap-5 md:grid-cols-2 md:items-end">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--brand)]">Collections</p>
-            <h2 className="mt-3 text-4xl font-black tracking-[-0.04em] md:text-6xl">Find the right finish for the room.</h2>
-          </div>
-          <p className="max-w-xl text-base leading-7 text-[var(--muted)] md:justify-self-end">
-            Browse by application first. Detailed product photography, sizes, brands and live availability will be added only from verified Tile Mart inventory.
-          </p>
-        </div>
-
-        <div className="grid gap-px overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--line)] md:grid-cols-2">
-          {primaryCategories.map((category, index) => (
-            <article key={category.slug} className="min-h-72 bg-[var(--surface)] p-8 md:p-10">
-              <p className="text-sm font-bold text-[var(--brand)]">0{index + 1}</p>
-              <h3 className="mt-12 text-3xl font-black tracking-[-0.03em]">{category.name}</h3>
-              <p className="mt-4 max-w-md leading-7 text-[var(--muted)]">{category.description}</p>
-              <a href={whatsappHref} target="_blank" rel="noreferrer" className="mt-8 inline-flex border-b border-black pb-1 text-sm font-bold">
-                Ask about this category
-              </a>
-            </article>
+      <section className="border-b border-[var(--line)] bg-[var(--surface)]">
+        <div className="container grid divide-y divide-[var(--line)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {quickFacts.map(([value, label]) => (
+            <div key={value} className="py-6 sm:px-7 first:pl-0 last:pr-0">
+              <p className="text-lg font-black">{value}</p>
+              <p className="mt-1 text-sm text-[var(--muted)]">{label}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      <section id="sanitary" className="bg-[#171717] py-20 text-white md:py-28">
-        <div className="container grid gap-12 md:grid-cols-2 md:items-center">
+      <section className="container py-20 md:py-28">
+        <div className="grid gap-6 md:grid-cols-[1fr_.7fr] md:items-end">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/55">Beyond tiles</p>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] md:text-6xl">Complete the bathroom in one conversation.</h2>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--brand)]">Tiles by space</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.045em] md:text-6xl">Find the right direction before you visit.</h2>
           </div>
-          <div className="max-w-xl md:justify-self-end">
-            <p className="text-lg leading-8 text-white/70">
-              Tile Mart also works with sanitary and bathroom products. Tell us what you are building or renovating and ask what is currently available.
+          <p className="max-w-xl leading-7 text-[var(--muted)] md:justify-self-end">
+            Product inventory changes. This site does not pretend every design is always in stock; use it to narrow your choice, then confirm current showroom options with Tile Mart.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          {tileCategories.map((category, index) => (
+            <Link
+              key={category.slug}
+              href={`/tiles/${category.slug}`}
+              className="group relative min-h-72 overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white p-8 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 md:p-10"
+            >
+              <div className="absolute right-0 top-0 h-36 w-36 rounded-bl-[5rem] bg-[var(--brand-soft)] transition group-hover:scale-110" aria-hidden="true" />
+              <p className="relative text-xs font-black uppercase tracking-[0.2em] text-[var(--brand)]">0{index + 1}</p>
+              <h3 className="relative mt-16 text-3xl font-black tracking-[-0.035em]">{category.name}</h3>
+              <p className="relative mt-4 max-w-lg leading-7 text-[var(--muted)]">{category.short}</p>
+              <p className="relative mt-8 text-sm font-black text-[var(--brand)]">Explore category →</p>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-7 text-center">
+          <Link href="/tiles" className="inline-flex rounded-full border border-black/15 px-6 py-3 text-sm font-black">
+            View all tile guidance
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-[#e9e5dc] py-20 md:py-28">
+        <div className="container grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+          <div className="tile-sample-light aspect-square max-h-[560px] rounded-[2.5rem] border border-black/8" aria-hidden="true" />
+          <div className="lg:pl-8">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--brand)]">Bathroom solutions</p>
+            <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] md:text-6xl">Tiles are only part of the bathroom.</h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
+              Tile Mart also deals in sanitary ware, wash basins and bathroom sets. Use the sanitary section to plan what you need, then ask the showroom about current options.
             </p>
-            <a href={whatsappHref} target="_blank" rel="noreferrer" className="mt-8 inline-flex rounded-full bg-white px-6 py-3.5 font-bold text-black">
-              Ask on WhatsApp
+            <Link href="/sanitary-ware" className="mt-8 inline-flex rounded-full bg-[#101820] px-6 py-3.5 text-sm font-black text-white">
+              Explore sanitary ware
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="container py-20 md:py-28">
+        <div className="grid overflow-hidden rounded-[2.25rem] border border-[var(--line)] bg-white lg:grid-cols-[.9fr_1.1fr]">
+          <div className="bg-[var(--brand)] p-8 text-white md:p-12 lg:p-14">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-white/55">Tile Mart Peshawar</p>
+            <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] md:text-5xl">See the options in person.</h2>
+            <p className="mt-5 max-w-md leading-7 text-white/75">
+              For a specific design, size or bathroom item, contact Tile Mart before travelling so the team can confirm what is currently available.
+            </p>
+            <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex rounded-full bg-white px-6 py-3.5 text-sm font-black text-[var(--brand-dark)]">
+              Open directions
             </a>
           </div>
-        </div>
-      </section>
-
-      <section id="showroom" className="container py-20 md:py-28">
-        <div className="grid overflow-hidden rounded-3xl bg-[var(--surface)] shadow-[0_24px_80px_rgba(0,0,0,.08)] md:grid-cols-[.8fr_1.2fr]">
-          <div className="bg-[var(--brand)] p-8 text-white md:p-12">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white/70">Tile Mart Peshawar</p>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em]">See products in person.</h2>
-            <p className="mt-5 leading-7 text-white/80">Visit the showroom or contact the team before you travel if you are looking for a specific tile or sanitary item.</p>
-          </div>
-          <div className="grid gap-8 p-8 md:grid-cols-2 md:p-12">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Call</p>
-              <a className="mt-3 block text-xl font-black" href={`tel:${business.phone.replace(/\s/g, "")}`}>{business.phone}</a>
+          <div className="grid gap-px bg-[var(--line)] sm:grid-cols-2">
+            <div className="bg-white p-8 md:p-10">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--muted)]">Address</p>
+              <p className="mt-3 text-xl font-black leading-7">{business.address.street}</p>
+              <p className="mt-2 text-sm text-[var(--muted)]">{business.city}, {business.region} {business.postalCode}</p>
             </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">WhatsApp</p>
-              <a className="mt-3 block text-xl font-black" href={whatsappHref} target="_blank" rel="noreferrer">{business.whatsapp}</a>
+            <div className="bg-white p-8 md:p-10">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--muted)]">Phone</p>
+              <a href={phoneHref} className="mt-3 block text-xl font-black text-[var(--brand)]">{business.phone}</a>
+              <p className="mt-2 text-sm text-[var(--muted)]">Tap to call from mobile.</p>
             </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Location</p>
-              <p className="mt-3 text-xl font-black">Peshawar, Khyber Pakhtunkhwa</p>
+            <div className="bg-white p-8 md:p-10">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--muted)]">WhatsApp</p>
+              <a href={whatsappHref()} target="_blank" rel="noreferrer" className="mt-3 block text-xl font-black text-[var(--brand)]">{business.whatsapp}</a>
+              <p className="mt-2 text-sm text-[var(--muted)]">Best for product enquiries and photos.</p>
             </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)]">Directions</p>
-              <a className="mt-3 inline-block text-xl font-black text-[var(--brand)]" href={business.directionsUrl} target="_blank" rel="noreferrer">Open map ↗</a>
+            <div className="bg-white p-8 md:p-10">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--muted)]">Showroom</p>
+              <Link href="/showroom" className="mt-3 block text-xl font-black text-[var(--brand)]">Visit details →</Link>
+              <p className="mt-2 text-sm text-[var(--muted)]">Location, directions and contact options.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-[var(--line)] bg-[var(--surface)]">
-        <div className="container flex flex-col gap-6 py-8 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Tile Mart. Peshawar, Pakistan.</p>
-          <div className="flex flex-wrap gap-5">
-            <a href={business.social.facebook} target="_blank" rel="noreferrer">Facebook</a>
-            <a href={business.social.tiktok} target="_blank" rel="noreferrer">TikTok</a>
-            <a href={business.social.youtube} target="_blank" rel="noreferrer">YouTube</a>
-          </div>
-        </div>
-      </footer>
+      <ContactPanel title="Have a room, project or tile idea in mind?" />
     </main>
   );
 }
