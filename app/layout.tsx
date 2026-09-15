@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   },
   description:
     "Discover tiles and sanitary ware from Tile Mart in Peshawar. Explore product categories, contact the showroom, or enquire directly on WhatsApp.",
-  metadataBase: new URL("https://tilemart.pk"),
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
