@@ -36,3 +36,40 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Smoke test core routes
+        run: |
+          npm run start -- --hostname 127.0.0.1 > /tmp/tilemart-next.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+
+          ready=0
+          for i in {1..30}; do
+            if curl --silent --fail http://127.0.0.1:3000/ > /dev/null; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+
+          if [ "$ready" -ne 1 ]; then
+            cat /tmp/tilemart-next.log
+            exit 1
+          fi
+
+          for route in \
+            / \
+            /tiles \
+            /tiles/floor-tiles \
+            /tiles/wall-tiles \
+            /tiles/bathroom-tiles \
+            /tiles/kitchen-tiles \
+            /sanitary-ware \
+            /about \
+            /showroom \
+            /contact \
+            /robots.txt \
+            /sitemap.xml; do
+            echo "Checking $route"
+            curl --silent --show-error --fail "http://127.0.0.1:3000$route" > /dev/null
+          done
