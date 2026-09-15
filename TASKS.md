@@ -64,7 +64,7 @@ This is the execution source of truth. Keep it current as work is completed.
 - [x] Document deployment steps
 - [x] Document domain/DNS assumptions
 - [x] Prepare Search Console setup checklist
-- [ ] Prepare analytics implementation checklist
+- [x] Prepare analytics implementation checklist (`ANALYTICS.md`)
 - [x] Explicitly document owner-only blockers
 - [ ] Final production review after a deployable preview/production URL exists
 
