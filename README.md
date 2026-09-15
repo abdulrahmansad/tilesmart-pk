@@ -5,7 +5,9 @@ Official website project for **Tile Mart**, a tiles and sanitary-ware business i
 ## Business baseline
 
 - Brand: Tile Mart
-- Primary market: Peshawar, Khyber Pakhtunkhwa, Pakistan
+- Market-facing name: Tile Mart Peshawar
+- Main category: tiles
+- Additional categories: sanitary ware, wash basins, bathroom sets
 - Showroom: Shops 24–27, Block B, Jan Plaza, Karkhano Market, Peshawar 25000, Pakistan
 - Phone: +92 343 5511501
 - WhatsApp: +92 333 9377919
@@ -14,14 +16,75 @@ Official website project for **Tile Mart**, a tiles and sanitary-ware business i
 - Facebook: https://www.facebook.com/profile.php?id=100063740152580
 - Directions: https://share.google/1l9C81NCHb86DDrYF
 
-## Goal
+## Product goal
 
-Build a polished, fast, mobile-first commercial website that helps Tile Mart rank for relevant Peshawar searches, showcases products professionally, and converts visitors into WhatsApp enquiries, phone calls, and showroom visits.
+A fast, mobile-first commercial website focused on three outcomes:
 
-## Working method
+1. help Peshawar customers understand what Tile Mart deals in;
+2. make tiles and sanitary products easier to browse by use case;
+3. convert visitors into WhatsApp enquiries, phone calls and showroom visits.
 
-The project is governed by `AGENTS.md`, `PROJECT.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `TASKS.md`, and `DECISIONS.md`.
+The site deliberately avoids a fake stock catalogue. Brands, prices, exact products, opening hours and policies are published only when verified.
 
-When working in OpenCode, run `/continue`. It is designed to keep taking the next highest-priority unfinished task, implement it, test it, update project status, and continue until the site is complete or a genuine owner-only blocker is reached.
+## Core routes
 
-> Do not publish unverified business claims. Unknown product brands, prices, opening hours, warranties, stock levels, and other factual claims must remain unconfirmed until verified by the owner or a reliable first-party source.
+- `/` — main Tile Mart landing page
+- `/tiles` — tile category hub
+- `/tiles/floor-tiles`
+- `/tiles/wall-tiles`
+- `/tiles/bathroom-tiles`
+- `/tiles/kitchen-tiles`
+- `/sanitary-ware`
+- `/about`
+- `/showroom`
+- `/contact`
+- `/sitemap.xml`
+- `/robots.txt`
+
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript 6
+- Tailwind CSS 4
+- GitHub Actions CI
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+Quality checks:
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+## Production environment
+
+Set the final site origin before deployment:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://YOUR-DOMAIN
+```
+
+Do not leave the localhost fallback in production.
+
+## Project documentation
+
+- `PROJECT.md` — product scope
+- `ARCHITECTURE.md` — technical architecture
+- `ROADMAP.md` — phase plan
+- `TASKS.md` — execution checklist
+- `DECISIONS.md` — durable decisions
+- `RESEARCH.md` — public business and market research
+- `SEO.md` — local/search strategy
+- `DEPLOYMENT.md` — launch instructions
+
+## Accuracy rule
+
+Do **not** publish unverified business claims. Unknown brands, prices, opening hours, warranties, stock levels, delivery/installation policies, founding history and similar claims remain unconfirmed until supported by the owner or a reliable first-party source.
