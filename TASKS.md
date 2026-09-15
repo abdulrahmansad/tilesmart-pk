@@ -7,8 +7,8 @@ This is the execution source of truth. Agents must keep it current as work is co
 - [x] Establish project brief
 - [x] Establish architecture
 - [x] Establish roadmap
-- [ ] Add OpenCode continuous `/continue` workflow
-- [ ] Add specialist review agents
+- [x] Add OpenCode continuous `/continue` workflow
+- [x] Add specialist review agents
 
 ## Phase 1 — Research and content
 - [ ] Audit all accessible first-party social/public business information
