@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Smoke test core routes
+      - name: Smoke test and crawl core routes
         run: |
           npm run start -- --hostname 127.0.0.1 > /tmp/tilemart-next.log 2>&1 &
           SERVER_PID=$!
@@ -73,3 +73,5 @@ jobs:
             echo "Checking $route"
             curl --silent --show-error --fail "http://127.0.0.1:3000$route" > /dev/null
           done
+
+          node scripts/check-links.mjs http://127.0.0.1:3000
