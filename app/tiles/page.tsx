@@ -29,19 +29,17 @@ export default function TilesPage() {
       />
 
       <section className="container py-20 md:py-28">
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] md:grid-cols-2">
           {tileCategories.map((category, index) => (
-            <Link
-              key={category.slug}
-              href={`/tiles/${category.slug}`}
-              className="group overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white"
-            >
-              <div className={`h-52 ${index % 2 === 0 ? "tile-sample-light" : "surface-grid bg-[#dfe7e9]"}`} aria-hidden="true" />
+            <Link key={category.slug} href={`/tiles/${category.slug}`} className="group grid min-h-[420px] grid-rows-[190px_1fr] bg-white transition-colors hover:bg-[#f8f6f1]">
+              <div className={`relative overflow-hidden ${index % 2 === 0 ? "material-board" : "surface-grid bg-[#dfe7e9]"}`} aria-hidden="true">
+                <span className="absolute left-6 top-6 border border-black/10 bg-white/88 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[var(--brand)] backdrop-blur">0{index + 1}</span>
+              </div>
               <div className="p-8 md:p-10">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--brand)]">Tile guide</p>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em]">{category.name}</h2>
-                <p className="mt-4 leading-7 text-[var(--muted)]">{category.description}</p>
-                <p className="mt-7 text-sm font-black text-[var(--brand)]">Explore {category.name.toLowerCase()} →</p>
+                <p className="eyebrow text-[var(--brand)]">Tile guide</p>
+                <h2 className="mt-4 text-3xl font-extrabold tracking-[-0.04em]">{category.name}</h2>
+                <p className="mt-4 max-w-xl leading-7 text-[var(--muted)]">{category.description}</p>
+                <p className="mt-8 text-sm font-black text-[var(--brand)]">Explore {category.name.toLowerCase()} →</p>
               </div>
             </Link>
           ))}
@@ -50,15 +48,15 @@ export default function TilesPage() {
 
       <section className="bg-white py-20 md:py-28">
         <div className="container">
-          <div className="max-w-3xl">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--brand)]">A better way to shop</p>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.045em] md:text-6xl">Four steps before you buy.</h2>
+          <div className="max-w-4xl">
+            <p className="eyebrow text-[var(--brand)]">A better way to shop</p>
+            <h2 className="display-title mt-5 text-4xl md:text-6xl">Four decisions before you buy.</h2>
           </div>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--line)] md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] md:grid-cols-2 lg:grid-cols-4">
             {choosingSteps.map(([number, title, copy]) => (
-              <article key={number} className="bg-white p-7 md:p-8">
+              <article key={number} className="bg-white p-8">
                 <p className="text-sm font-black text-[var(--brand)]">{number}</p>
-                <h3 className="mt-8 text-xl font-black">{title}</h3>
+                <h3 className="mt-12 text-xl font-extrabold tracking-[-0.025em]">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{copy}</p>
               </article>
             ))}
@@ -67,24 +65,19 @@ export default function TilesPage() {
       </section>
 
       <section className="container py-20 md:py-28">
-        <div className="grid gap-10 lg:grid-cols-[.75fr_1.25fr] lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[var(--brand)]">Before visiting</p>
-            <h2 className="mt-4 text-4xl font-black tracking-[-0.04em]">Send the room details first.</h2>
+            <p className="eyebrow text-[var(--brand)]">Before visiting</p>
+            <h2 className="display-title mt-5 text-4xl md:text-5xl">Send the room details first.</h2>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-px border border-[var(--line)] bg-[var(--line)] sm:grid-cols-2">
             {["Room / application", "Approximate area", "Preferred colour or style", "Photos or inspiration"].map((item) => (
-              <div key={item} className="rounded-2xl border border-[var(--line)] bg-white p-6">
-                <p className="font-black">{item}</p>
+              <div key={item} className="bg-white p-7">
+                <p className="font-extrabold">{item}</p>
                 <p className="mt-2 text-sm leading-6 text-[var(--muted)]">Include this in your WhatsApp message so the conversation starts with useful context.</p>
               </div>
             ))}
-            <a
-              href={whatsappHref("Hello Tile Mart, I need help choosing tiles. I can share my room/application, approximate area and preferred style.")}
-              target="_blank"
-              rel="noreferrer"
-              className="sm:col-span-2 rounded-2xl bg-[var(--brand)] p-6 text-center font-black text-white"
-            >
+            <a href={whatsappHref("Hello Tile Mart, I need help choosing tiles. I can share my room/application, approximate area and preferred style.")} target="_blank" rel="noreferrer" className="btn btn-primary col-span-full justify-center py-5 text-sm">
               Start a tile enquiry on WhatsApp
             </a>
           </div>
