@@ -14,11 +14,15 @@ export function BrandMark({ compact = false, light = false }: BrandMarkProps) {
       className="inline-flex items-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-4"
       aria-label="Tile Mart Peshawar home"
     >
-      <span className={`logo-shell ${light ? "logo-shell-light" : ""}`}>
+      <span
+        className={`inline-flex items-center justify-center ${light ? "bg-white px-2 py-1" : ""}`}
+      >
         <img
-          src={`${basePath}/tile-mart-logo.webp`}
+          src={`${basePath}/tile-mart-logo-official.webp`}
           alt="Tile Mart"
-          className={`${compact ? "h-12 sm:h-14" : "h-14 sm:h-16"} w-auto object-contain`}
+          width={360}
+          height={235}
+          className={`${compact ? "w-[156px] sm:w-[178px]" : "w-[182px] sm:w-[208px]"} h-auto object-contain`}
         />
       </span>
     </Link>
