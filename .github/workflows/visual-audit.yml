@@ -1,0 +1,65 @@
+name: Visual Audit
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: visual-audit
+  cancel-in-progress: true
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Chromium
+        run: npx --yes playwright@1.55.0 install --with-deps chromium
+
+      - name: Start app
+        run: |
+          npm start -- --hostname 127.0.0.1 --port 3000 > /tmp/tilemart-next.log 2>&1 &
+          echo $! > /tmp/tilemart-next.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/tilemart-next.log
+          exit 1
+
+      - name: Capture screenshots
+        run: |
+          mkdir -p visual-audit
+          npx --yes playwright@1.55.0 screenshot --browser=chromium --device="Desktop Chrome HiDPI" --full-page http://127.0.0.1:3000/ visual-audit/home-desktop.png
+          npx --yes playwright@1.55.0 screenshot --browser=chromium --device="iPhone 13" --full-page http://127.0.0.1:3000/ visual-audit/home-mobile.png
+          npx --yes playwright@1.55.0 screenshot --browser=chromium --device="Desktop Chrome HiDPI" --full-page http://127.0.0.1:3000/tiles visual-audit/tiles-desktop.png
+          npx --yes playwright@1.55.0 screenshot --browser=chromium --device="iPhone 13" --full-page http://127.0.0.1:3000/sanitary-ware visual-audit/sanitary-mobile.png
+          npx --yes playwright@1.55.0 screenshot --browser=chromium --device="Desktop Chrome HiDPI" --full-page http://127.0.0.1:3000/showroom visual-audit/showroom-desktop.png
+          npx --yes playwright@1.55.0 screenshot --browser=chromium --device="iPhone 13" --full-page http://127.0.0.1:3000/contact visual-audit/contact-mobile.png
+
+      - name: Upload visual audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-audit
+          path: visual-audit/*.png
+          retention-days: 7
