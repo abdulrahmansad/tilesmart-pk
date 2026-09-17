@@ -5,11 +5,11 @@ import { phoneHref, whatsappHref } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#101820] text-white">
+    <footer className="border-t-4 border-[var(--brand)] bg-[#101820] text-white">
       <div className="container grid gap-12 py-14 md:grid-cols-[1.2fr_.8fr_.8fr] md:py-18">
         <div>
           <BrandMark compact light />
-          <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
+          <p className="mt-6 max-w-md text-sm leading-7 text-white/65">
             Tiles and sanitary ware in Peshawar. Browse ideas online, then confirm current designs, sizes and availability directly with Tile Mart.
           </p>
           <p className="mt-5 max-w-sm text-sm leading-6 text-white/75">
@@ -17,23 +17,23 @@ export function SiteFooter() {
           </p>
         </div>
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-white/45">Explore</p>
-          <div className="mt-5 grid gap-3 text-sm font-semibold text-white/80">
-            <Link href="/tiles">Tiles</Link>
-            <Link href="/sanitary-ware">Sanitary Ware</Link>
-            <Link href="/showroom">Showroom</Link>
-            <Link href="/about">About Tile Mart</Link>
-            <Link href="/contact">Contact</Link>
+          <p className="eyebrow text-white/42">Explore</p>
+          <div className="mt-5 grid gap-3 text-sm font-semibold text-white/78">
+            <Link className="transition hover:text-white" href="/tiles">Tiles</Link>
+            <Link className="transition hover:text-white" href="/sanitary-ware">Sanitary Ware</Link>
+            <Link className="transition hover:text-white" href="/showroom">Showroom</Link>
+            <Link className="transition hover:text-white" href="/about">About Tile Mart</Link>
+            <Link className="transition hover:text-white" href="/contact">Contact</Link>
           </div>
         </div>
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-white/45">Contact</p>
-          <div className="mt-5 grid gap-3 text-sm font-semibold text-white/80">
-            <a href={phoneHref}>{business.phone}</a>
-            <a href={whatsappHref()} target="_blank" rel="noreferrer">WhatsApp {business.whatsapp}</a>
-            <a href={business.social.facebook} target="_blank" rel="noreferrer">Facebook</a>
-            <a href={business.social.tiktok} target="_blank" rel="noreferrer">TikTok</a>
-            <a href={business.social.youtube} target="_blank" rel="noreferrer">YouTube</a>
+          <p className="eyebrow text-white/42">Contact</p>
+          <div className="mt-5 grid gap-3 text-sm font-semibold text-white/78">
+            <a className="transition hover:text-white" href={phoneHref}>{business.phone}</a>
+            <a className="transition hover:text-white" href={whatsappHref()} target="_blank" rel="noreferrer">WhatsApp {business.whatsapp}</a>
+            <a className="transition hover:text-white" href={business.social.facebook} target="_blank" rel="noreferrer">Facebook</a>
+            <a className="transition hover:text-white" href={business.social.tiktok} target="_blank" rel="noreferrer">TikTok</a>
+            <a className="transition hover:text-white" href={business.social.youtube} target="_blank" rel="noreferrer">YouTube</a>
           </div>
         </div>
       </div>

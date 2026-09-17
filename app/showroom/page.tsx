@@ -23,33 +23,33 @@ export default function ShowroomPage() {
       />
 
       <section className="container py-20 md:py-28">
-        <div className="grid overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white lg:grid-cols-[.8fr_1.2fr]">
-          <div className="p-8 md:p-12">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--brand)]">Address</p>
-            <h2 className="mt-4 text-3xl font-black tracking-[-0.035em]">{business.address.street}</h2>
-            <p className="mt-3 leading-7 text-[var(--muted)]">
+        <div className="grid overflow-hidden border border-[var(--line)] bg-white shadow-[0_18px_55px_rgba(15,31,42,.06)] lg:grid-cols-[.8fr_1.2fr]">
+          <div className="p-8 md:p-12 lg:p-14">
+            <p className="eyebrow text-[var(--brand)]">Address</p>
+            <h2 className="display-title mt-5 text-3xl md:text-4xl">{business.address.street}</h2>
+            <p className="mt-4 leading-7 text-[var(--muted)]">
               {business.address.locality}, {business.address.region}, {business.country} {business.postalCode}
             </p>
-            <div className="mt-8 grid gap-3">
-              <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="rounded-full bg-[var(--brand)] px-6 py-3.5 text-center text-sm font-black text-white">
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              <a href={business.directionsUrl} target="_blank" rel="noreferrer" className="btn btn-primary sm:col-span-2 lg:col-span-1 xl:col-span-2">
                 Open Google directions
               </a>
-              <a href={phoneHref} className="rounded-full border border-black/12 px-6 py-3.5 text-center text-sm font-black">
-                Call {business.phone}
+              <a href={phoneHref} className="btn btn-secondary">
+                Call showroom
               </a>
-              <a href={whatsappHref()} target="_blank" rel="noreferrer" className="rounded-full border border-black/12 px-6 py-3.5 text-center text-sm font-black">
-                WhatsApp {business.whatsapp}
+              <a href={whatsappHref()} target="_blank" rel="noreferrer" className="btn btn-secondary">
+                WhatsApp
               </a>
             </div>
-            <p className="mt-7 text-xs leading-6 text-[var(--muted)]">
-              Opening hours are intentionally not published here until they are confirmed by the business owner.
-            </p>
+            <div className="mt-8 border-t border-[var(--line)] pt-6 text-sm leading-7 text-[var(--muted)]">
+              Need a particular tile type, size or sanitary item? Contact Tile Mart before travelling so the team can confirm current options.
+            </div>
           </div>
-          <div className="min-h-[420px] bg-[#e7e4dc]">
+          <div className="min-h-[440px] bg-[#e7e4dc]">
             <iframe
               title="Tile Mart Peshawar map"
               src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-              className="h-full min-h-[420px] w-full border-0"
+              className="h-full min-h-[440px] w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -57,18 +57,21 @@ export default function ShowroomPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 md:py-24">
-        <div className="container grid gap-10 md:grid-cols-3">
-          {[
-            ["Before you travel", "Message or call if you need a particular tile type, size, design or sanitary item."],
-            ["Bring measurements", "Approximate floor and wall areas make it easier to discuss the project and compare options."],
-            ["Bring references", "Photos, colour references and room inspiration help communicate the look you are trying to achieve."],
-          ].map(([title, copy]) => (
-            <article key={title} className="rounded-[1.75rem] border border-[var(--line)] bg-[var(--background)] p-8">
-              <h2 className="text-xl font-black">{title}</h2>
-              <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{copy}</p>
-            </article>
-          ))}
+      <section className="border-y border-[var(--line)] bg-white py-20 md:py-24">
+        <div className="container">
+          <div className="grid gap-px border border-[var(--line)] bg-[var(--line)] md:grid-cols-3">
+            {[
+              ["01", "Before you travel", "Message or call if you need a particular tile type, size, design or sanitary item."],
+              ["02", "Bring measurements", "Approximate floor and wall areas make it easier to discuss the project and compare options."],
+              ["03", "Bring references", "Photos, colour references and room inspiration help communicate the look you are trying to achieve."],
+            ].map(([number, title, copy]) => (
+              <article key={title} className="card-lift bg-white p-8 md:p-9">
+                <p className="eyebrow text-[var(--brand)]">{number}</p>
+                <h2 className="mt-10 text-xl font-extrabold tracking-[-0.025em]">{title}</h2>
+                <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{copy}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
