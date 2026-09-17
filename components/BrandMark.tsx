@@ -6,24 +6,25 @@ type BrandMarkProps = {
 };
 
 export function BrandMark({ compact = false, light = false }: BrandMarkProps) {
-  const textColor = light ? "text-white" : "text-[var(--brand)]";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
-    <Link href="/" className="inline-flex items-end gap-2" aria-label="Tile Mart Peshawar home">
-      <span className={`inline-grid grid-cols-4 gap-0.5 ${textColor}`} aria-hidden="true">
-        {"TILE".split("").map((letter) => (
-          <span
-            key={letter}
-            className={`grid place-items-center bg-current ${compact ? "h-8 w-8" : "h-9 w-9 sm:h-10 sm:w-10"}`}
-          >
-            <span className={`${light ? "text-[var(--brand-dark)]" : "text-white"} text-lg font-black leading-none`}>
-              {letter}
-            </span>
-          </span>
-        ))}
+    <Link
+      href="/"
+      className="inline-flex items-center gap-3 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-4"
+      aria-label="Tile Mart Peshawar home"
+    >
+      <span className={`logo-shell ${light ? "logo-shell-light" : ""}`}>
+        <img
+          src={`${basePath}/tile-mart-logo.webp`}
+          alt="Tile Mart"
+          className={`${compact ? "h-9 sm:h-10" : "h-11 sm:h-12"} w-auto object-contain`}
+        />
       </span>
-      <span className={`${textColor} ${compact ? "text-xl" : "text-2xl sm:text-3xl"} font-semibold italic leading-none`}>
-        Mart
+      <span className="hidden border-l border-current/15 pl-3 text-[10px] font-extrabold uppercase leading-[1.35] tracking-[0.18em] text-[var(--muted)] sm:block">
+        Tiles & sanitary ware
+        <br />
+        Peshawar
       </span>
     </Link>
   );
